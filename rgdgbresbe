@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Générateur de NDA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+    <h1>Générateur de NDA</h1>
+    <form id="ndaForm">
+        <label for="name">Nom :</label>
+        <input type="text" id="name" required>
+
+        <label for="address">Adresse :</label>
+        <input type="text" id="address" required>
+
+        <label for="birthdate">Date de naissance :</label>
+        <input type="text" id="birthdate" required>
+
+        <label for="birthplace">Lieu de naissance :</label>
+        <input type="text" id="birthplace" required>
+
+        <label for="companyName">Nom de la société :</label>
+        <input type="text" id="companyName" required>
+
+        <label for="companyAddress">Siège social :</label>
+        <input type="text" id="companyAddress" required>
+
+        <label for="rcs">RCS :</label>
+        <input type="text" id="rcs" required>
+
+        <label for="representative">Représentant :</label>
+        <input type="text" id="representative" required>
+
+        <label for="project">Projet envisagé :</label>
+        <textarea id="project" required></textarea>
+
+        <label for="date">Date de signature :</label>
+        <input type="text" id="date" required>
+
+        <button type="submit">Générer le NDA</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("ndaForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            var name = document.getElementById("name").value;
+            var address = document.getElementById("address").value;
+            var birthdate = document.getElementById("birthdate").value;
+            var birthplace = document.getElementById("birthplace").value;
+            var companyName = document.getElementById("companyName").value;
+            var companyAddress = document.getElementById("companyAddress").value;
+            var rcs = document.getElementById("rcs").value;
+            var representative = document.getElementById("representative").value;
+            var project = document.getElementById("project").value;
+            var date = document.getElementById("date").value;
+
+            var ndaContent = `Accord de confidentialité
+
+ENTRE
+M. ${name} demeurant au ${address} né le ${birthdate} à ${birthplace} France
+ci-après désignés comme le Transmetteur
+d’une part,
+
+ET
+La société ${companyName} Siège social ${companyAddress} RCS ${rcs}
+Dûment représentée par ${representative}
+ci-après le Récipiendaire d’autre part,
+
+Etant préalablement exposé ce qui suit :
+Considérant que le Transmetteur a conçu et étudie actuellement la commercialisation d’un produit novateur permettant d’assurer ${project} ; qu’il souhaite négocier avec le Récipiendaire la possibilité de mettre en œuvre ce produit; que cette négociation implique nécessairement la transmission d’informations confidentielles, notamment relatives au produit, à ses fonctionnalités, à ses concepts de fonctionnement. Que les parties conviennent que la confidentialité de ces négociations est essentielle.
+
+Il a été convenu :
+
+<strong>Article 1 - Définitions</strong>
+
+Sont considérées comme informations confidentielles toutes informations et toutes données, quelle qu’en soit la forme, transmises par le Transmetteur au Récipiendaire, par écrit ou oralement ou à l’occasion des présentes discussions, négociations ou rencontres entre les parties, et incluant sans limitation tous documents écrits ou imprimés, les analyses, compilations, études, propositions et autres documents que les services, les représentants, les employés ou les conseillers du Transmetteur auraient préparés.
+
+<strong>Article 2 - Obligations du Récipiendaire</strong>
+
+Le Récipiendaire s’engage à ce que lesdites informations confidentielles :
+• soient protégées et gardées strictement confidentielles et soient traitées avec le degré nécessaire de précaution et de protection eu égard à leur nature ;
+• ne soient en aucun cas divulguées à des tiers sans autorisation expresse et préalable du Transmetteur.
+
+En particulier le Récipiendaire s’engage à :
+• ne pas réaliser de présentation publique ou de publication de ces informations ;
+• ne pas les communiquer à un éditeur tiers ;
+• ne pas réutiliser ces informations dans des appels d’offre.
+
+Ne sont pas couvertes par le présent engagement les informations entrées dans le domaine public préalablement à leur divulgation dans le cadre du présent accord.
+
+<strong>Article 3 – Propriété et propriété intellectuelle</strong>
+
+La transmission des informations par le Transmetteur n’emporte aucune cession de droit de propriété, ou de droit de propriété intellectuelle au Récipiendaire.
+Les informations transmises au travers de ce contrat restent l’entière propriété du Transmetteur.
+
+<strong>Article 4 - Restitution et destruction des informations confidentielles</strong>
+
+Au terme du partenariat envisagé – que celui-ci soit conclu ou non , le Récipiendaire s’engage à ce que :
+• la totalité des informations confidentielles soit restituée au Transmetteur, le cas échéant à première demande ;
+• les autres supports d’informations confidentielles soient détruits sans délai.
+
+<strong>Article 5 - Confidentialité du présent engagement</strong>
+
+L’existence et les termes du présent accord ainsi que l’existence et le contenu des présentes négociations sont confidentiels.
+
+<strong>Article 6 - Droit applicable et compétence juridictionnelle</strong>
+
+Le présent contrat est soumis au droit français.
+En cas de difficultés relatives à la validité, l’interprétation ou l’exécution du présent contrat, les parties conviennent de soumettre leurs différends aux tribunaux de Paris.
+
+<strong>Article 7 – Durée</strong>
+
+La durée du présent engagement est fixée à 3 ans à compter de la fourniture de la dernière information confidentielle.
+Note : la durée est fixée précisément à 3 ans
+
+Fait à Paris, le ${date}
+En deux exemplaires
+Le Transmetteur, Le Récipiendaire, Pour la Société`;
+
+            document.getElementById("result").innerHTML = ndaContent;
+        });
+    </script>
+</body>
+</html>
